@@ -1234,6 +1234,8 @@
   <!-- ============================================================
        JAVASCRIPT
   ============================================================ -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="config.js"></script>
   <script>
     // ── Nav scroll behaviour ──────────────────────────────────────
     const nav = document.getElementById('nav');
@@ -1282,10 +1284,13 @@
     revealEls.forEach(el => observer.observe(el));
 
     // ── Contact form ──────────────────────────────────────────────
-    const form    = document.getElementById('contactForm');
-    const success = document.getElementById('formSuccess');
+    const db = (window.supabase && typeof CONFIG !== 'undefined')
+      ? window.supabase.createClient(CONFIG.supabaseUrl, CONFIG.supabaseKey)
+      : null;
+    const form     = document.getElementById('contactForm');
+    const success  = document.getElementById('formSuccess');
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const name    = form.name.value.trim();
       const email   = form.email.value.trim();
@@ -1297,16 +1302,22 @@
         return;
       }
 
-      // Simulate submission
       const btn = form.querySelector('.form__submit');
       btn.textContent = 'Sending…';
       btn.disabled    = true;
 
-      setTimeout(() => {
-        form.reset();
-        btn.style.display   = 'none';
-        success.style.display = 'block';
-      }, 800);
+      if (!db) { console.error('Supabase not initialised — check config.js and CDN'); return; }
+      const { error } = await db.from('leads').insert({ name, email, message });
+
+      if (error) {
+        btn.textContent = 'Try again';
+        btn.disabled    = false;
+        return;
+      }
+
+      form.reset();
+      btn.style.display     = 'none';
+      success.style.display = 'block';
     });
   </script>
 </body>

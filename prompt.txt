@@ -1,0 +1,105 @@
+# Claude Code Prompt: Data Agency Landing Page
+
+## Prompt
+
+You are an expert frontend developer and UI/UX designer. I need you to design 
+and build a fully functional, single-page landing website for a data agency. 
+Before writing any code, analyze the design reference site at https://lin3s.com 
+and extract its key design principles: layout structure, typography choices, 
+spacing rhythm, animation style, color usage, navigation behavior, and overall 
+aesthetic feel. The goal is to replicate that same level of craft and 
+intentionality — not copy it — but channel its design language into a brand-new 
+site.
+
+---
+
+## About the Company
+
+This is a boutique data agency that helps businesses make sense of their data 
+through analysis, visualization, and strategy. The agency's core values are 
+privacy, simplicity, and putting technology in service of people — not the other 
+way around. The tone is intelligent, trustworthy, and modern without being cold.
+
+---
+
+## Design Direction
+
+Study https://lin3s.com carefully and apply the following observations to the 
+build:
+
+- Use a dark or neutral editorial-style color palette, with one strong accent 
+  color used sparingly
+- Typography should feel intentional and confident — large display headings, 
+  clean body text, generous whitespace
+- Layout should feel architectural: structured grids, deliberate alignment, 
+  nothing random
+- Interactions and animations should be subtle but present — smooth scroll, 
+  fade-ins on scroll, hover states that feel alive
+- Navigation should be minimal and sticky, with a clean logo on the left and 
+  nav links on the right
+- The overall feeling should be: premium, focused, and human
+
+---
+
+## Page Sections to Build
+
+### 1. Hero
+Full-screen or near-full-screen opening section with a strong headline 
+(something about unlocking data's potential), a one-line subheading, and a 
+single CTA button. Background should be bold but not distracting — consider a 
+dark gradient, subtle motion, or geometric abstract element.
+
+### 2. Value Proposition
+Three or four short columns or cards highlighting core benefits: access to 
+quality data, actionable insights, competitive advantage, data security.
+
+### 3. Services
+A structured section listing the agency's main services: data collection, 
+analysis, visualization, modeling, business intelligence, market research, 
+strategy, security, and consulting. Use a layout that feels editorial — perhaps 
+a numbered list or a two-column grid with large labels.
+
+### 4. Manifesto / Philosophy
+A full-width statement section with a powerful paragraph or pull quote about 
+the agency's belief that technology should serve people. Large typography, 
+minimal decoration.
+
+### 5. Pain Points / How We Help
+A section that speaks directly to client frustrations — lack of expertise, data 
+overload, poor quality data, no time, inability to derive insights — and how the 
+agency addresses each one.
+
+### 6. Contact / CTA
+A closing section with a strong call to action, a simple contact form or email 
+link, and a footer with minimal links.
+
+---
+
+## Technical Requirements
+
+- Build this as a single self-contained HTML file with internal CSS and 
+  JavaScript — no external frameworks, no build tools required
+- Use CSS custom properties for the design system (colors, typography scale, 
+  spacing)
+- Animations should use Intersection Observer API for scroll-triggered reveals
+- Smooth scrolling throughout
+- Fully responsive across mobile, tablet, and desktop
+- Semantic HTML5 elements throughout
+- No placeholder images — use CSS shapes, SVG, or geometric abstract visuals 
+  instead
+- Performance-conscious: no unnecessary libraries
+
+---
+
+## First Step — Before Writing Any Code
+
+Come up with a full plan covering:
+
+- Design system definition (colors, type scale, spacing units, accent usage)
+- Section-by-section layout breakdown
+- Animation strategy (what animates, when, and how)
+- Component structure
+- Responsive behavior across breakpoints
+
+Write this plan into a file called `PLAN.md` before touching any HTML, CSS, 
+or JavaScript.
