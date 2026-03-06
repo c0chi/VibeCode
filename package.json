@@ -4,5 +4,8 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.41.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.98.0"
   }
 }

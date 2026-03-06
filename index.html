@@ -1234,8 +1234,6 @@
   <!-- ============================================================
        JAVASCRIPT
   ============================================================ -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-  <script src="config.js"></script>
   <script>
     // ── Nav scroll behaviour ──────────────────────────────────────
     const nav = document.getElementById('nav');
@@ -1284,11 +1282,8 @@
     revealEls.forEach(el => observer.observe(el));
 
     // ── Contact form ──────────────────────────────────────────────
-    const db = (window.supabase && typeof CONFIG !== 'undefined')
-      ? window.supabase.createClient(CONFIG.supabaseUrl, CONFIG.supabaseKey)
-      : null;
-    const form     = document.getElementById('contactForm');
-    const success  = document.getElementById('formSuccess');
+    const form    = document.getElementById('contactForm');
+    const success = document.getElementById('formSuccess');
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -1306,10 +1301,13 @@
       btn.textContent = 'Sending…';
       btn.disabled    = true;
 
-      if (!db) { console.error('Supabase not initialised — check config.js and CDN'); return; }
-      const { error } = await db.from('leads').insert({ name, email, message });
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message }),
+      });
 
-      if (error) {
+      if (!res.ok) {
         btn.textContent = 'Try again';
         btn.disabled    = false;
         return;
